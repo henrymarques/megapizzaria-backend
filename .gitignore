@@ -1,0 +1,14 @@
+node_modules/
+dist/
+build/
+tmp/
+temp/
+coverage
+static/*
+!static/.gitkeep
+.node-dev.json
+.env
+coverage
+*.lcov
+dist/
+.env.*
