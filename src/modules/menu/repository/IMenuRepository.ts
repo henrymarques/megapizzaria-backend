@@ -1,5 +1,3 @@
-import { Item } from "@prisma/client";
-
 import Menu from "../models/Menu";
 
 export interface ICreateMenuDTO {
@@ -20,7 +18,7 @@ export interface IUpdateMenuDTO {
 }
 
 export default interface IMenuRepository {
-  create(data: ICreateMenuDTO): Promise<Item>;
+  create(data: ICreateMenuDTO): Promise<Menu>;
   list(): Promise<Menu[]>;
   listActives(): Promise<Menu[]>;
   get(id: number): Promise<Menu | null>;

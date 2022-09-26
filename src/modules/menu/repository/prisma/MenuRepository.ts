@@ -1,6 +1,5 @@
 import { Item, PrismaClient } from "@prisma/client";
 
-import Menu from "../../models/Menu";
 import IMenuRepository, {
   ICreateMenuDTO,
   IUpdateMenuDTO,
@@ -12,7 +11,7 @@ export default class MenuRepository implements IMenuRepository {
     this.prisma = new PrismaClient();
   }
 
-  async update(data: IUpdateMenuDTO): Promise<Menu> {
+  async update(data: IUpdateMenuDTO): Promise<Item> {
     return this.prisma.item.update({ where: { id: data.id }, data });
   }
 
@@ -34,11 +33,11 @@ export default class MenuRepository implements IMenuRepository {
     return menuItem;
   }
 
-  async list(): Promise<Menu[]> {
+  async list(): Promise<Item[]> {
     return this.prisma.item.findMany();
   }
 
-  async listActives(): Promise<Menu[]> {
+  async listActives(): Promise<Item[]> {
     return this.prisma.item.findMany({ where: { isActive: true } });
   }
 

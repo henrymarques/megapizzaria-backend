@@ -1,3 +1,5 @@
+import AppError from "AppError";
+
 import IMenuRepository, { IUpdateMenuDTO } from "../repository/IMenuRepository";
 
 export default class UpdateMenuService {
@@ -11,6 +13,9 @@ export default class UpdateMenuService {
     description,
     isActive,
   }: IUpdateMenuDTO) {
+    const item = await this.menuRepository.get(id);
+    if (!item) throw new AppError("Não encontrado");
+
     return await this.menuRepository.update({
       id,
       title,
